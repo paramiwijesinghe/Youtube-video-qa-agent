@@ -1,0 +1,23 @@
+services:
+  rag_app:
+    build: .
+    container_name: youtube_rag_backend
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./chroma_db:/app/chroma_db:rw  
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  frontend:
+    image: python:3.10-slim
+    container_name: youtube_rag_frontend
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python -m http.server 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rag_app

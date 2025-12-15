@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pydantic-settings
+youtube-transcript-api
+pytube
+langchain_community
+yt_dlp
+langchain-chroma
+langchain-google-genai
+langchain-huggingface
+langgraph
+langchain_openai
+langchain-anthropic
