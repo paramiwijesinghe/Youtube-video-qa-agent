@@ -1,6 +1,6 @@
 services:
   rag_app:
-    build: .
+    image: parami2000/youtube-url-qa-bot:latest
     container_name: youtube_rag_backend
     ports:
       - "8001:8000"
