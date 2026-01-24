@@ -1,7 +1,9 @@
 """FastAPI entrypoint for the YouTube Transcript RAG backend."""
 
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import router
 
@@ -33,3 +35,9 @@ app.include_router(router, prefix="/api/v1")
 def health_check() -> dict:
     """Simple liveness endpoint used by containers / monitoring."""
     return {"status": "ok"}
+
+
+# Serve static files (frontend) from the frontend directory
+frontend_dir = Path(__file__).parent.parent / "frontend"
+if frontend_dir.exists():
+    app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="static")
