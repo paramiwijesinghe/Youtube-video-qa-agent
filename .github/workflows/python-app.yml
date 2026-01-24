@@ -49,6 +49,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    # Create .env for Docker Compose automatically
+    - name: Create .env file
+      run: |
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> ./Youtube_Transcript/.env
+        echo "HF_TOKEN=${{ secrets.HF_TOKEN }}" >> ./Youtube_Transcript/.env
+
       # Build images using docker-compose
     - name: Build Docker Images with Compose
       run: |
