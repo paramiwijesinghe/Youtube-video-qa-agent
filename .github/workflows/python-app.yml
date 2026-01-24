@@ -49,12 +49,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Build Docker image
-    - name: Build Docker image
+      # Build images using docker-compose
+    - name: Build Docker Images with Compose
       run: |
-        docker build -t parami2000/youtube-url-qa-bot:latest ./Youtube_Transcript
+        docker-compose -f ./Youtube_Transcript/docker-compose.yml build
 
-      # Push Docker image
-    - name: Push Docker image
+    # Push images to Docker Hub
+    - name: Push Docker Images with Compose
       run: |
-        docker push parami2000/youtube-url-qa-bot:latest
+        docker-compose -f ./Youtube_Transcript/docker-compose.yml push
