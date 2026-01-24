@@ -1,9 +1,11 @@
+version: "3.9"
+
 services:
   rag_app:
     image: parami2000/youtube-url-qa-bot:latest
     container_name: youtube_rag_backend
     ports:
-      - "8001:8000"
+      - "8001:8000"   # Expose backend API
     volumes:
       - ./chroma_db:/app/chroma_db:rw  
     env_file:
@@ -11,13 +13,9 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: python:3.10-slim
+    image: parami2000/youtube-rag-frontend:latest
     container_name: youtube_rag_frontend
-    working_dir: /app
-    volumes:
-      - ./:/app
-    command: python -m http.server 3000
     ports:
-      - "3000:3000"
+      - "3000:3000"   # Expose frontend UI
     depends_on:
       - rag_app
