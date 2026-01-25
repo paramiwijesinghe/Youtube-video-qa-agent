@@ -1,5 +1,5 @@
 // Base URL of the FastAPI backend
-const API_BASE_URL = 'http://localhost:8001/api/v1';
+const API_BASE_URL = '/api/v1';
 
 // DOM elements for the simple chat UI
 const youtubeUrlInput = document.getElementById('youtube-url');
