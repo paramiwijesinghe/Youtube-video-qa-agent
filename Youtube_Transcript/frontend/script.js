@@ -1,5 +1,5 @@
 // Base URL of the FastAPI backend
-const API_BASE_URL = '/api/v1';
+const API_BASE_URL = 'https://youtube-video-qa-agent-production.up.railway.app/api/v1';
 
 // DOM elements for the simple chat UI
 const youtubeUrlInput = document.getElementById('youtube-url');
